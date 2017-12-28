@@ -8,27 +8,25 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Passageiro;
-import service.PassageiroService;
+import model.Motorista;
+import service.MotoristaService;
 
-public class ListarPassageiro implements Command {
+public class CorridaMotorista implements Command {
 
 	@Override
 	public void executar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		PassageiroService service = new PassageiroService();
-		ArrayList<Passageiro> lista = null;		
 		
+		MotoristaService service = new MotoristaService();
 		
-		lista = service.listarPassageiros();		
-	
-		request.setAttribute("lista", lista);		
+		ArrayList<Motorista> lista = null; 
 		
+		lista = service.motoristasAtivos();
 		
-	
+		request.setAttribute("lista", lista);
 		
-		RequestDispatcher dispacher = request.getRequestDispatcher("listarPassageiro.jsp");
+		RequestDispatcher dispacher = request.getRequestDispatcher("corrida1.jsp");
 		dispacher.forward(request, response);
 		
 

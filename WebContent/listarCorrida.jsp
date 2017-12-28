@@ -1,21 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=Utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Motoristas Cadastrados </title>
-	
+	<title>Listagem de Corridas </title>
 	<link href="DataTables/datatables.css" rel="stylesheet">
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-
 	<!-- Menu -->
 	<c:import url="/menu.jsp"/>
 
@@ -25,7 +22,7 @@
 		
 			<div class="col-lg-12">
 				<hr>
-				<h2> Passageiros Cadastrados </h2>
+				<h2> Corridas Cadastradas </h2>
 				<hr>
 				
 				<form method="GET" action="controller.do">
@@ -33,21 +30,21 @@
 						<thead>
 							<tr>
 								<th> Identificação  </th>
-								<th>Nome </th>
-								<th>CPF </th>
-								<th>Sexo </th>								
-								<th>Nascimento </th>								
+								<th>Passageiro </th>
+								<th>Motorista </th>
+								<th>Valor </th>								
+																
 							</tr>						
 						</thead>
 						
 						<tbody>
-							<c:forEach var="passageiro" items="${lista}">
-								<tr data-href="controller.do?command=ListarPassageiro">
-									<td> ${passageiro.getId() } </td>
-									<td> ${passageiro.getNome() }</td>
-									<td> ${passageiro.getCpf() }</td>
-									<td> ${passageiro.getSexo() }</td>									
-									<td><fmt:formatDate value="${passageiro.getNascimento() }" pattern="dd/MM/yyyy"/></td> 
+							<c:forEach var="corrida" items="${lista}">
+								<tr data-href="controller.do?command=ListarCorrida">
+									<td> ${corrida.getId() } </td>
+									<td> ${corrida.getNomePassageiro() }</td>
+									<td> ${corrida.getNomeMotorista() }</td>
+									<td> ${corrida.getValor() }</td>									
+									
 							</c:forEach>						
 						</tbody>				
 					</table>	
@@ -60,7 +57,7 @@
 	
 	</div>
 	
-
+	
 	<!-- Footer  -->
 	<c:import url="footer.jsp"/>
 
@@ -73,7 +70,5 @@
 	<script src="DataTables/sorting/date-euro.js"></script>
 	<script src="js/table.js"></script>
 	
-
-
 </body>
 </html>

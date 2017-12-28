@@ -1,5 +1,9 @@
 package command;
 
+
+
+
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -42,7 +46,7 @@ public class CadastrarMotorista implements Command {
 		
 		try {
 			if(service.insert(motorista)) {
-				request.setAttribute("motorista cadastrado", "Motorista cadastrado com sucesso");
+				request.setAttribute("sucesso", "Motorista cadastrado com sucesso");
 				RequestDispatcher view = request.getRequestDispatcher("index.jsp");
 				view.forward(request, response);
 			} else {

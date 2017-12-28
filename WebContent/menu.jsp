@@ -18,7 +18,7 @@
                     </li>
                     <li><a href="controller.do?command=ListarMotorista">Motoristas Cadastrados </a>
                     </li>
-                    <li><a href="listarCorridas.jsp">Corridas Cadastrados</a>
+                    <li><a href="controller.do?command=ListarCorrida">Corridas Cadastrados</a>
                     </li>
                         
                 </ul>

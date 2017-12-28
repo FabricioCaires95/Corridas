@@ -23,4 +23,8 @@ public class MotoristaService {
 		 dao.alterar(motorista);
 	}
 	
+	public ArrayList<Motorista> motoristasAtivos(){
+		return dao.motoristasAtivos();
+	}
+	
 }

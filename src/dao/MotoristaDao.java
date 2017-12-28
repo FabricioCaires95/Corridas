@@ -13,7 +13,7 @@ public class MotoristaDao {
 	
 	public boolean insert (Motorista motorista ) throws SQLException {
 		
-		String insert = "INSERT INTO motorista (nome,cpf,sexo,modeloCarro,status,nascimento) VALUES(?,?,?,?,?,?)";
+		String insert = "INSERT INTO motorista (nome_motorista,cpf,sexo,modeloCarro,status,nascimento) VALUES(?,?,?,?,?,?)";
 		
 		try (Connection conn = ConnectionFactory.obtemConexao()){
 			conn.setAutoCommit(false);
@@ -49,7 +49,7 @@ public class MotoristaDao {
 		
 		ArrayList<Motorista> motoristas = new ArrayList<>();
 		
-		String select = "SELECT id,nome,cpf,sexo,modeloCarro,status,nascimento FROM motorista";
+		String select = "SELECT id,nome_motorista,cpf,sexo,modeloCarro,status,nascimento FROM motorista";
 		
 		try(Connection conn = ConnectionFactory.obtemConexao(); 
 				PreparedStatement stm = conn.prepareStatement(select);){
@@ -58,7 +58,7 @@ public class MotoristaDao {
 				while (rs.next()) {
 					Motorista motorista = new Motorista();
 					motorista.setId(rs.getInt("id"));
-					motorista.setNome(rs.getString("nome"));
+					motorista.setNome(rs.getString("nome_motorista"));
 					motorista.setCpf(rs.getString("cpf"));
 					motorista.setSexo(rs.getString("sexo"));
 					motorista.setModeloCarro(rs.getString("modeloCarro"));
@@ -96,6 +96,38 @@ public class MotoristaDao {
 			
 		}
 		
+		
+	}
+	
+	
+	public ArrayList<Motorista> motoristasAtivos(){
+		
+		String select = "select id, nome_motorista from motorista where status = 'ativo'";
+		
+		ArrayList<Motorista> motoristas = new ArrayList<>();
+		
+		try(Connection conn = ConnectionFactory.obtemConexao(); 
+				PreparedStatement stm = conn.prepareStatement(select);){
+			
+			try(ResultSet rs = stm.executeQuery()){
+				
+				while (rs.next()) {
+					Motorista motorista = new Motorista();
+					motorista.setId(rs.getInt("id"));
+					motorista.setNome(rs.getString("nome_motorista"));
+									
+					motoristas.add(motorista);
+				}
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+			
+			
+		} catch(SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		return motoristas;
 		
 	}
 	

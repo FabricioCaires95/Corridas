@@ -35,7 +35,7 @@
 				
 				<a class="btn btn-success" href="passageiro.jsp"> Cadastrar Passageiro </a>
 				<a class="btn btn-success" href="motorista.jsp"> Cadastrar Motorista </a>
-				<a class="btn btn-success" href="corrida.jsp"> Cadastrar Corrida </a>
+				<a class="btn btn-success" href="controller.do?command=CorridaListar"> Cadastrar Corrida </a>
 			</div>
 
 		</div>

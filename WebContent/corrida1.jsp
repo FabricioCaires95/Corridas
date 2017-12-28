@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">    
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/style.css">
-	<title>Cadastro Corridas</title>
+	<title>Corrida | Selecione um Motorista</title>
 </head>
 <body>
 	<!-- Menu  -->
@@ -18,17 +18,15 @@
 		<div class="row">
 			<h2 class="page-header"> Cadastro de Corrida </h2>
 			
-			<h3> Passo 1: Selecione o Passageiro </h3>		
+			<h3> Passo 2: Selecione o Motorista </h3>		
 		</div>
 	
 		<div class="row">
 		
 			<div class="col-lg-12">
 			
-				<form method="GET" action="controller.do" >
-					
+				<form method="GET" action="controller.do">
 					<table id="list-cadastrados" class="table table-striped table-bordered table-hover" style="width: 100%;">
-						
 						<thead>
 							<tr>
 								<th> Identificação  </th>
@@ -39,20 +37,24 @@
 						</thead>
 						
 						<tbody>
-							<c:forEach var="passageiro" items="${lista}">
-								<tr data-href="controller.do?command=CorridaListar">
-									<td> ${passageiro.getId() } </td>
-									<td> ${passageiro.getNome() }</td>	
-									<td><a class="btn btn-success" href="controller.do?command=GuardarDado&id=${passageiro.id }&pagina=1"> Selecionar</a> </td>	
-														 
+							<c:forEach var="motorista" items="${lista}">
+								<tr data-href="controller.do?command=CorridaMotorista">
+									<td> ${motorista.getId() } </td>
+									<td> ${motorista.getNome() }</td>	
+									<td><a class="btn btn-success" href="controller.do?command=GuardarDado&id=${motorista.id }&pagina=2"> Selecionar</a> </td>	
+									 					 
 							</c:forEach>						
 						</tbody>				
 					</table>	
-															
+					  <button class="btn btn-primary" type="submit" name="command" value="CorridaMotorista"> Listar </button>
+										
 				</form>	
-							
+			
 			</div>		
-		</div>	
+		
+		</div>
+	
+	
 	</div>
 	
 	<!-- Footer  -->
@@ -64,6 +66,5 @@
 	<script src="DataTables/datatables.js"></script>
 	<script src="DataTables/sorting/date-euro.js"></script>
 	<script src="js/table.js"></script>
-	
 </body>
 </html>

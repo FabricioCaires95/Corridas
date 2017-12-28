@@ -14,7 +14,7 @@ public class PassageiroDao {
 	
 	public boolean insert (Passageiro passageiro) throws SQLException {
 		
-		String insert = "INSERT INTO passageiro (nome,cpf,sexo,nascimento) VALUES (?,?,?,?)";
+		String insert = "INSERT INTO passageiro (nome_passageiro,cpf,sexo,nascimento) VALUES (?,?,?,?)";
 		
 		try (Connection conn = ConnectionFactory.obtemConexao()){
 			conn.setAutoCommit(false);
@@ -47,7 +47,7 @@ public class PassageiroDao {
 	public ArrayList<Passageiro> listarPassageiros(){
 		
 		ArrayList<Passageiro> passageiros = new ArrayList<>();
-		String select = "SELECT id,nome,cpf,sexo,nascimento FROM passageiro";
+		String select = "SELECT id,nome_passageiro,cpf,sexo,nascimento FROM passageiro";
 		
 		try (Connection conn = ConnectionFactory.obtemConexao();
 				PreparedStatement stm = conn.prepareStatement(select);){
@@ -56,7 +56,7 @@ public class PassageiroDao {
 				while(rs.next()) {
 					Passageiro passageiro = new Passageiro();
 					passageiro.setId(rs.getInt("id"));
-					passageiro.setNome(rs.getString("nome"));
+					passageiro.setNome(rs.getString("nome_passageiro"));
 					passageiro.setCpf(rs.getString("cpf"));
 					passageiro.setSexo(rs.getString("sexo"));
 					passageiro.setNascimento(rs.getDate("nascimento"));

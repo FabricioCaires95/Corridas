@@ -1,5 +1,10 @@
 package command;
 
+/**
+ * Recebe os parametros da pagina passageiro.jsp e realiza o cadastro no banco 
+ * 
+ */
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
